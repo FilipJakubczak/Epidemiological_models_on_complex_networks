@@ -1,0 +1,27 @@
+<!-- index.html-->
+
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h1>Epidemiological models on complex networks</h1>
+  <form action="/generate" method="POST">
+  	<label for="number_of_nodes">Number of nodes:</label></br>
+  	<input type="text" name="number_of_nodes" value="1000"></br>
+
+  	<label for="connect_chance">Nodes connect chance:</label></br>
+  	<input type="text" name="connect_chance" min="0" max="1" value="0.01"></br>
+
+  	<label for="infect_chance">Infect chance:</label></br>
+  	<input type="text" name="infect_chance" min="0" max="1" value="0.05"></br>
+
+  	<label for="number_of_iterations">Number of iterations:</label></br>
+  	<input type="text" name="number_of_iterations" value="25"></br>
+  	<input type="submit" value="Generate">
+  </form>
+
+  <p>Network creation status: {{create_status}}</p>
+  <p>Infection status: {{infect_status}}</p>
+  <img src="data:image/png;base64,{{ image_data }}" alt="Graph will show up after generation" style="width: 100%; height: 100%;">
+</div>
+{% endblock %}
